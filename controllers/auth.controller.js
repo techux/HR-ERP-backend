@@ -32,7 +32,6 @@ const loginController = async (req, res) => {
         const accessToken = jwt.sign(
             { 
                 id: user._id ,
-                role: user.role
             },
             process.env.JWT_SECRET_KEY,
             {
@@ -65,7 +64,6 @@ const loginController = async (req, res) => {
 const registerController = async (req, res) => {
     try {
         const {name, email, password} = req.body ;
-        let role = "hr";
 
         if (!name || !email || !password ) {
             return res.status(400).json({
@@ -93,7 +91,7 @@ const registerController = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10) ;
 
-        const result = await User.create({name, email, password:hashedPassword, role}) ;
+        const result = await User.create({name, email, password:hashedPassword}) ;
 
         return res.status(201).json({
             status: "ok",
