@@ -1,5 +1,5 @@
-const express = require('express');
-const dotenv = require('dotenv');
+const express = require("express");
+const dotenv = require("dotenv");
 dotenv.config();
 
 const dbConnect = require("./utils/dbConnect");
@@ -7,15 +7,18 @@ const dbConnect = require("./utils/dbConnect");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.get('/', (req, res) => {
-    return res.status(200).json({
-        status: "ok",
-        message: "Welcome to API!"
-    });
+const authRoute = require("./routes/auth.route");
+
+app.get("/", (req, res) => {
+  return res.status(200).json({
+    status: "ok",
+    message: "Welcome to API!",
+  });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on PORT : ${PORT}`);
-    dbConnect();
+app.use("/auth", authRoute);
 
+app.listen(PORT, () => {
+  console.log(`Server is running on PORT : ${PORT}`);
+  dbConnect();
 });
