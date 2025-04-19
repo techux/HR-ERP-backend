@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8080;
 const {auth} = require("./middlewares/auth.middleware")
 const authRoute = require("./routes/auth.route");
 const candidateRoute = require("./routes/candidate.route");
+const employeeRoute = require("./routes/employee.route");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,14 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRoute);
 app.use("/candidate", auth, candidateRoute);
+app.use("/employee", auth, employeeRoute);
+
+app.use((req, res) => {
+  return res.status(404).json({
+    status: "error",
+    message: "Route not found",
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT : ${PORT}`);
