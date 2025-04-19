@@ -1,5 +1,5 @@
-const Attendance = require('../models/attendance.model');
 const Employee = require('../models/employee.model');
+// const Attendance = require('../models/attendance.model');
 
 const allAttendanceController = async (req, res) => {
     try {
