@@ -3,7 +3,7 @@ const Employee = require('../models/employee.model');
 
 const allEmployeeController = async (req, res) => {
     try {
-        const employees = await Employee.find();
+        const employees = await Employee.find().select("-attendace");
         return res.status(200).json({
             status: "ok",
             message: "All Employees fetched successfully",
@@ -37,7 +37,7 @@ const addEmployeeController = async (req, res) => {
             });
         }
 
-        const employee = await Employee.create({ name, email, phone, department, position, joiningDate });
+        const employee = await Employee.create({ name, email, phone, department, position, joiningDate }).select("-attendace");
         return res.status(201).json({
             status: "ok",
             message: "Employee created successfully",
@@ -56,7 +56,7 @@ const addEmployeeController = async (req, res) => {
 const removeEmployeeController = async (req, res) => {
     try {
         const { id } = req.params;
-        const employee = await Employee.findByIdAndDelete(id).select("-__v -createdAt -updatedAt -status");
+        const employee = await Employee.findByIdAndDelete(id).select("-__v -attendace -createdAt -updatedAt -status");
         if (!employee) {
             return res.status(404).json({
                 status: "error",
@@ -102,7 +102,7 @@ const updateEmployeeController = async (req, res) => {
             id, 
             { name, email, phone, department, position, joiningDate }
             , { new: true }
-        );
+        ).select("-attendace");
 
         if (!employee) {
             return res.status(404).json({

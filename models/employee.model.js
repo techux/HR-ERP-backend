@@ -26,7 +26,12 @@ const employeeSchema = new mongoose.Schema({
     joiningDate: {
         type: Date,
         required: true
-    }
+    },
+    attendace: {
+        type: String,
+        enum: ['Present', 'Absent', 'Medical Leave', 'Work from Home'],
+        default: 'Absent'
+    },
 },
 {
     timestamps: true,
