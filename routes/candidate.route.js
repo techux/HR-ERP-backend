@@ -9,7 +9,6 @@ const {
   updateCandidateStatusController,
 } = require("../controllers/candidate.controller");
 
-const { auth } = require("../middlewares/auth.middleware");
 const upload = require("../middlewares/multer.middleware");
 
 router.get("/", allCandidateController);

@@ -11,7 +11,11 @@ const allAttendanceController = async (req, res) => {
             data: attendace
         });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error(`Error on allAttendanceController ${error.stack || error.message}`)
+        res.status(500).json({
+            status:"error",
+            message: "Internal Server Error"
+        });
     }
 }
 
@@ -41,7 +45,11 @@ const updateAttendanceController = async (req, res) => {
             data: attendance
         });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error(`Error on updateAttendanceController ${error.stack || error.message}`)
+        res.status(500).json({
+            status:"error",
+            message: "Internal Server Error"
+        });
     }
 }
 
