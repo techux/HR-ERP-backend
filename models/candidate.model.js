@@ -27,8 +27,8 @@ const candidateSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        default: "New",
-        enum: ["New", "Schedulde", "Ongoing", "Selected", "Rejected"]
+        // enum: ["New", "Schedulde", "Ongoing", "Selected", "Rejected"]
+        // default: "New",
     }
 },{
     timestamps: true

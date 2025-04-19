@@ -16,13 +16,12 @@ const employeeSchema = new mongoose.Schema({
     },
     department: {
         type: String,
-        required: true
     },
     position: {
         type: String,
         required: true,
-        enum: ["Intern", "Full Time", "Junior", "Senior", "Team Lead"],
-        default: "Intern"
+        // enum: ["Intern", "Full Time", "Junior", "Senior", "Team Lead"],
+        // default: "Intern"
     },
     joiningDate: {
         type: Date,
