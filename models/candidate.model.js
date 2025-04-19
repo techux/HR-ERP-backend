@@ -24,6 +24,11 @@ const candidateSchema = new mongoose.Schema({
     resume: {
         type: String,
         required: true
+    },
+    status: {
+        type: String,
+        default: "New",
+        enum: ["New", "Schedulde", "Ongoing", "Selected", "Rejected"]
     }
 },{
     timestamps: true
