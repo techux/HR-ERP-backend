@@ -37,7 +37,7 @@ const addEmployeeController = async (req, res) => {
             });
         }
 
-        const employee = await Employee.create({ name, email, phone, department, position, joiningDate }).select("-attendace");
+        const employee = await Employee.create({ name, email, phone, department, position, joiningDate });
         return res.status(201).json({
             status: "ok",
             message: "Employee created successfully",
