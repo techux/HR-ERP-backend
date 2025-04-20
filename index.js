@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require('cors');
 dotenv.config();
 
 const dbConnect = require("./utils/dbConnect");
@@ -14,6 +15,7 @@ const employeeRoute = require("./routes/employee.route");
 const attendanceRoute = require("./routes/attendance.route");
 const leaveRoute = require("./routes/leave.route");
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
