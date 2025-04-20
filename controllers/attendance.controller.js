@@ -3,7 +3,7 @@ const Employee = require('../models/employee.model');
 
 const allAttendanceController = async (req, res) => {
     try {
-        const attendace = await Employee.find().select('name position department attendace');
+        const attendace = await Employee.find();
         // const attendance = await Attendance.find().populate('employeeId', 'name position department');
         res.status(200).json({
             status: "ok",
